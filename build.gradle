@@ -1,0 +1,22 @@
+buildscript { apply from: file('gradle/buildscript.gradle'), to: buildscript }
+apply from: "$rootDir/gradle/repositories.gradle"
+apply from: "$rootDir/gradle/dependencies.gradle"
+
+apply plugin: 'java'
+apply plugin: 'scala'
+
+repositories {
+    maven { url repos.gradle }
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies{
+    compile ([
+            libs.spark,
+            libs.sparkSql,
+            libs.sparkMl,
+            libs.scaldingArgs
+    ])
+
+}

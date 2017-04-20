@@ -1,0 +1,17 @@
+ext {
+    versions = [:]
+    libs = [:]
+}
+versions += [
+        scalding: "0.16.0",
+        scala: "2.11",
+        spark: "2.11"
+]
+
+libs += [
+        spark: "org.apache.spark:spark-core_$versions.scala:$versions.spark",
+        sparkSql: "org.apache.spark:spark-sql_$versions.scala:$versions.spark",
+        sparkMl: "org.apache.spark:spark-mllib_$versions.scala:$versions.spark",
+        scaldingArgs: "com.twitter:scalding-args_$versions.scala:$versions.scalding"
+]
+

@@ -1,0 +1,8 @@
+ext {
+    repos = [:]
+}
+
+repos += [
+        maven2:"http://repo.maven.apache.org/maven2",
+        gradle:"https://plugins.gradle.org/m2/"
+]
