@@ -1,4 +1,4 @@
-buildscript { apply from: file('gradle/buildscript.gradle'), to: buildscript }
+//buildscript { apply from: file('gradle/buildscript.gradle'), to: buildscript }
 apply from: "$rootDir/gradle/repositories.gradle"
 apply from: "$rootDir/gradle/dependencies.gradle"
 
@@ -6,17 +6,17 @@ apply plugin: 'java'
 apply plugin: 'scala'
 
 repositories {
-    maven { url repos.gradle }
-    mavenCentral()
-    mavenLocal()
+    maven { url repos.maven2 }
 }
 
-dependencies{
-    compile ([
-            libs.spark,
-            libs.sparkSql,
-            libs.sparkMl,
-            libs.scaldingArgs
-    ])
+configurations {
+    all*.exclude group: "org.jboss.netty", module: "netty"
+    compile.extendsFrom fat
+}
 
+dependencies {
+    compile libs.spark
+    compile libs.sparkSql
+    compile libs.sparkMl
+    fat libs.scaldingArgs
 }
